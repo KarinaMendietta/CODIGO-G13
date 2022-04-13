@@ -3,8 +3,8 @@
 #INPUTS - ENTRADAS
 montoOrigen = input("ingrese el monto: ")
 
-#PROCESO
-opcion = "0"
+#PROCESO 
+opcion = "0" #al poner en comillas py entiende que 0 es string
 while(opcion == "0"):
     print("opción 1 - soles a dolares")
     print("opción 2 - dolares a soles")
