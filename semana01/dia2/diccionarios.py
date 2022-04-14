@@ -40,7 +40,7 @@ alumno2 = {
     'aprobado':True,
     'cursos':['Java','Swift','Kotlin']
 }
-alumnos = [alumno1,alumno2]
+alumnos = [alumno1,alumno2] # alumno 1 en posicion 0, alumno 2 en posicion 1, donde esta ubicado osea su indice o index
 print("*" * 100)
 for columna in alumno1:
     print(columna,end = '       | ')

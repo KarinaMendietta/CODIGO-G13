@@ -1,3 +1,4 @@
+from operator import index
 import tabulate
 #PROGRAMA PARA
 # CREATE - C
@@ -37,18 +38,25 @@ while(opcion != 5):
         print(tabulate.tabulate(registros,cabeceras))
     elif(opcion == 3):
         print("ACTUALIZAR ALUMNO")
-        #PASO 1 BUSCAR EL ALUMNO A EDITAR
+        #paso1 buscar alumno a editar
+        #busco el la posicion del email a buscar, recorre los valores de alumnos
         valorBusqueda = input("Ingrese el email del alumno a actualizar : ")
-        indexAlumno = -1
-        for i in range(len(alumnos)):
-            dicAlumnoBusqueda = alumnos[i]
-            for clave,valor in dicAlumnoBusqueda.items():
+        indexAlumno = -1 #es el valor resultante de donde esta indice no deberia 
+        #no deberia tener relacion con uno particular en la lista
+        
+        # la posicion el indice dnde esta ubicdo el alumno, 
+        #alumnos es una lista de dicionarios donde cada diccionario es un alumno
+
+        for i in range(len(alumnos)):  #len es longitud de la lista
+            dictAlumnoBusqueda = alumnos[i]
+            for clave, valor in dictAlumno.items():
                 if(valor == valorBusqueda and clave == 'email'):
                     indexAlumno = i
-                    break
-        #print("el alumno esta en el indice : " + str(indexAlumno))
-        #print("datos del alumno : " + str(alumnos[indexAlumno]))
-        #PASO 2 INGRESAR LOS NUEVOS VALORES PARA EL ALUMNO A EDITAR
+                    break #rompe el flujo inicial para pder salirme de la instruccion
+        print("el alumno esta en el indice: " + str (indexAlumno))
+    
+
+        #paso2 ingresar los nuevos valores para el alumno a editar
         if(indexAlumno == -1):
             print("No se encontro el email del alumno")
         else:
@@ -59,29 +67,33 @@ while(opcion != 5):
                 'nombre':nombre,
                 'email':email,
                 'celular':celular
-            }
-            #PASO 3 ACTUALIZAR LOS DATOS DEL ALUMNO A EDITAR
+            }          
+        #paso3 actualizar los datos de alumno a editar
             alumnos[indexAlumno] = dictAlumnoEditar
-            print("ALUMNO ACTUALIZADO !!!")
     elif(opcion == 4):
         print("ELIMINAR ALUMNO")
-        #PASO 1 BUSCAR EL ALUMNO A ELIMINAR
-        valorBusqueda = input("Ingrese el email del alumno a eliminar : ")
-        indexAlumno = -1
-        for i in range(len(alumnos)):
-            dicAlumnoBusqueda = alumnos[i]
-            for clave,valor in dicAlumnoBusqueda.items():
+        valorBusqueda = input("Ingrese el email del alumno a actualizar : ")
+        indexAlumno = -1 
+        for i in range(len(alumnos)):  #len es longitud de la lista
+            dictAlumnoBusqueda = alumnos[i]
+            for clave, valor in dictAlumno.items():
                 if(valor == valorBusqueda and clave == 'email'):
                     indexAlumno = i
-                    break
-        #PASO 2 INGRESAR LOS NUEVOS VALORES PARA EL ALUMNO A ELIMINAR
+                    break #rompe el flujo inicial para pder salirme de la instruccion
+        print("el alumno esta en el indice: " + str (indexAlumno))
+    
+        #paso2 ingresar los nuevos valores para el alumno a editar
         if(indexAlumno == -1):
             print("No se encontro el email del alumno")
         else:
-            #ELIMINAR EL ALUMNO
-            alumnos.pop(indexAlumno)
-            print("ALUMNO ELIMINADO !!!")
+                      
+        #paso3 actualizar los datos de alumno a editar
+            alumnos[indexAlumno] = dictAlumnoEditar
+
+
     elif(opcion == 5):
         print("FINALIZANDO PROGRAMA")
     else:
         print("OPCION INCORRECTA")
+
+
