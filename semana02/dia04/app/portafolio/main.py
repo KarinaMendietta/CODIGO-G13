@@ -1,8 +1,8 @@
-from pydoc import doc
 from flask import Flask,render_template,request,session
 #import requests
 
-#URL = 'https://api.github.com/users/karinamendietta' ya no lo usare porque traerse del firebase
+#URL = 'https://api.github.com/users/cesarmayta'
+
 
 ## para conectarse a firebase
 import firebase_admin
