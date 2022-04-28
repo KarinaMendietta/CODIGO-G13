@@ -239,3 +239,62 @@ Query OK, 0 rows affected (0.01 sec)
 
 mysql> select * from alumno;
 Empty set (0.00 sec)
+
+
+me muestra pais y al lado la cantidad de alumnos por pais
+mysql> select pais, count(*) from alumno
+    -> GROUP BY pais;
++-----------+----------+
+| pais      | count(*) |
++-----------+----------+
+| Argentina |       15 |
+| Bolivia   |        1 |
+| Brazil    |       43 |
+| Chile     |        3 |
+| Colombia  |       16 |
+| Ecuador   |        2 |
+| Peru      |       16 |
+| Venezuela |        4 |
++-----------+----------+
+
+ordenarlos de menos a mas
+mysql> select pais, count(*) from alumno group by pais order by count(*) desc;
++-----------+----------+
+| pais      | count(*) |
++-----------+----------+
+| Brazil    |       43 |
+| Colombia  |       16 |
+| Peru      |       16 |
+| Argentina |       15 |
+| Venezuela |        4 |
+| Chile     |        3 |
+| Ecuador   |        2 |
+| Bolivia   |        1 |
++-----------+----------+
+
+mysql> select pais, count(*) as cantidad, avg(nota) as "nota promedio" from alumno
+    -> group by pais;
++-----------+----------+---------------+
+| pais      | cantidad | nota promedio |
++-----------+----------+---------------+
+| Argentina |       15 |       14.8667 |
+| Bolivia   |        1 |       17.0000 |
+| Brazil    |       43 |       14.7907 |
+| Chile     |        3 |       13.6667 |
+| Colombia  |       16 |       14.4375 |
+| Ecuador   |        2 |       12.5000 |
+| Peru      |       16 |       15.6250 |
+| Venezuela |        4 |       15.2500 |
++-----------+----------+---------------+
+
+quiero filtrar todos los paises cuya nota promedio es mayor a 15
+mysql> select pais, count(*) as "cantidad", avg(nota) as "promedio" from alumno
+    -> group by pais
+    -> having avg(nota) >=15;                   having es una condicional
++-----------+----------+----------+
+| pais      | cantidad | promedio |
++-----------+----------+----------+
+| Bolivia   |        1 |  17.0000 |
+| Peru      |       16 |  15.6250 |
+| Venezuela |        4 |  15.2500 |
++-----------+----------+----------+
